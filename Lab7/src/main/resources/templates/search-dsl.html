@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm kiếm sản phẩm (DSL)</title>
+</head>
+<body>
+<h2>Tìm kiếm sản phẩm theo khoảng giá (DSL Query)</h2>
+
+<form action="/product/search-dsl" method="get">
+    <input type="number" step="0.01" name="min" th:value="${param.min}" placeholder="Min Price?">
+    <input type="number" step="0.01" name="max" th:value="${param.max}" placeholder="Max Price?">
+    <button type="submit">Search</button>
+</form>
+
+<hr>
+
+<table border="1" style="width:100%">
+    <tr>
+        <th>ID</th>
+        <th>Tên sản phẩm</th>
+        <th>Giá</th>
+        <th>Ngày tạo</th>
+    </tr>
+    <th:block th:each="item : ${items}">
+        <tr>
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.price}"></td>
+            <td th:text="${#dates.format(item.createDate, 'dd/MM/yyyy')}"></td>
+        </tr>
+    </th:block>
+</table>
+
+</body>
+</html>
