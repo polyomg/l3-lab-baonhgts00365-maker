@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Kết quả hình chữ nhật</title>
+</head>
+<body>
+<h2>Kết quả tính toán</h2>
+
+<div th:if="${error}">
+    <p style="color: red;" th:text="${error}"></p>
+</div>
+
+<div th:unless="${error}">
+    <p>Chiều rộng: <span th:text="${width}"></span></p>
+    <p>Chiều dài: <span th:text="${height}"></span></p>
+    <p>Diện tích: <span th:text="${area}"></span></p>
+    <p>Chu vi: <span th:text="${perimeter}"></span></p>
+</div>
+
+<a href="/rect/form">Quay lại nhập dữ liệu</a>
+</body>
+</html>
